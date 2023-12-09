@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Pill Dispenser</title>
+    <style>
+        body {
+            margin: 0 auto;
+            max-width: 800px; /* Adjust the max-width to your preference */
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        p{
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+
+        td{
+            padding: 10px;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto; /* Add margin to the image */
+            max-width: 100%; /* Make sure the image does not exceed its container's width */
+            height: auto; /* Maintain the aspect ratio of the image */
+        }
+
+        .info-paragraph{
+            font-size: 17px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heading -->
+    <h1>Automated Patient-Centric Medication Management System</h1>
+    <p style="font-size: 18px; text-align: center;">- by Karthik Koundinya and Kushal Shah
+    <br>
+    <br>
+    <i>ME/AE 6705, Introduction to Mechatronics</i>
+    <br>
+    <i>Georgia Institute of Technology</i> 
+    <br>
+    <i>Course Instructor: Dr. Alexis Noel</i></p>
+
+    <h2>Introduction</h3>
+    <!-- Body -->
+    <!-- <p style="font-size: 18px; text-align: center;">
+        This is a concept for multiple patients sharing the same room in a hospital, such that they can themselves take their
+        medicines on time without a caregiver's aid. </p> -->
+        
+        <p class="info-paragraph">The demand for patient-centric solutions continues to drive innovation in the dynamic healthcare landscape. Addressing the 
+            challenges patients face in shared hospital rooms during the recovery process, we propose a groundbreaking concept – an 
+            Automated Patient-Centric Medication Management System.
+        </p>
+
+        <p class="info-paragraph">Traditionally, patients in recovery rely on caregivers for the timely administration of medications. However, the availability of 
+            caregivers is only sometimes guaranteed, leading to potential disruptions in medication schedules. Our concept seeks to revolutionize 
+            this process by introducing an automated system that allows patients to self-administer their medications without constant 
+            reliance on nursing staff.
+        </p>  
+
+        <p class="info-paragraph">The core idea involves scheduling medications for multiple patients and authenticating their access to prescribed medicines 
+            through passcode authentication technology. By giving patients control over their medication routines, we aim to enhance 
+            efficiency, reduce dependence on caregivers, and improve the overall healthcare experience, particularly in shared hospital rooms. 
+            This project embodies a vision of patient empowerment and represents a significant step towards redefining the standards of 
+            patient care in modern healthcare settings.
+        </p>
+
+    <h2>System Requirements</h3>
+    <!-- Table of 5 elements -->
+    <table border="1">
+        <tr>
+            <td><b>Mechanism: </b>Dispensing Mechanism (3D printed)</td>
+        </tr>
+        <tr>
+            <td><b>Sensors: </b>
+                <ul>
+                    <li>Temperature Sensor (PMOD TMP3)</li>
+                    <li>Accelerometer (on-board)</li>
+                    <li>Keypad (PMOD KYPD)</li>
+                </ul>
+        </tr>
+        <tr>
+            <td><b>Actors: </b>
+                <ul>
+                    <li>Buzzer (Soberton GT-0950RP3 magnetic transducer)</li>
+                    <li>LED</li>
+                    <li>DC motor with encoder (x2) (SKU 290-006)</li>
+                </ul>
+        </tr>
+        <tr>
+            <td><b>Miscellaneous: </b>
+                <ul>
+                    <li>NI myRIO</li>
+                    <li>Website/Webpage</li>
+                    <li>LabVIEW</li>
+                    <li>Breadboards, Jumper Cables, Resistors, Diodes, Battery, L293DNE (H-Bridge) etc.</li>
+                </ul>
+        </tr>
+    </table>
+
+    <h2>Why these requirements?</h2>
+    <!-- Another Body Section -->
+    <ul style="font-size: 16px; text-align: justify;">
+        <li><b>DC motor with encoder:</b> This component is crucial for the mechanical part of the system. The motor, coupled with an encoder, allows 
+            for precise control over the dispensing mechanism, ensuring accurate and controlled dispensing of medicines.
+        </li>
+
+        <li><b>Buzzer:</b> The buzzer serves as an alert system for patients. Each patient's unique buzzer sound helps personalize and ensures 
+            that the right person is notified at the right time for taking their medication.
+        </li>
+
+        <li><b>Keypad:</b> Patient authentication is a critical aspect of medication dispensing systems. Using a keypad with a passcode adds a layer 
+            of security, ensuring that only authorized individuals can access the medicines.
+        </li>
+
+        <li><b>Temperature sensor:</b> Medications often have specific storage temperature requirements. The temperature sensor helps monitor and ensure 
+            that the storage conditions are appropriate for the medicines, preventing degradation or spoilage due to temperature variations.
+        </li>
+        
+        <li><b>Accelerometer:</b> This component detects whether the medicine has been dispensed. It adds another layer of confirmation to the system, 
+            helping to track medication usage and ensuring that patients receive the prescribed doses.
+        </li>
+
+        <li><b>LED: </b> The LED is a visual indicator for hospital staff or maintenance personnel. It notifies them if the medication storage conditions 
+            are not within the acceptable temperature range, allowing timely intervention to prevent medication damage.
+       </li>
+
+       <li><b>NI myRIO: </b> The NI myRIO is the microcontroller that serves as the system's core. It executes the logic of the entire system, coordinating 
+        the actions of the various components to ensure the accurate and secure dispensing of medications.
+       </li>
+ 
+       <li><b>Website/Webpage: </b> The interface for editing patient details provides a user-friendly way for healthcare professionals to manage and update 
+        patient information and medication records. The medication dispensing system uses this record to give patients the right medicines at 
+        the right time. 
+        </li>
+    </ul>
+
+    <h2>Working Principle of the System</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td>
+                    <figure>
+                        <img style="width: 100%; height: auto;" src="Resources/ExternalSystem.png" alt="External System image not found">
+                        <figcaption style="text-align: center;"><b>External System</b></figcaption>
+                    </figure>
+                    
+                </td>
+                <td> 
+                    <figure>
+                        <img style="width: 100%; height: auto;" src="Resources/Circuitary.jpg" alt="Circuitary image not found">
+                        <figcaption style="text-align: center;"><b>Circuitary</b></figcaption>
+                    </figure>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <figure>
+                        <img style="width: 50%; max-height: 50%;" src="Resources/Design.jpeg" alt="External System image not found">
+                        <figcaption style="text-align: center;"><b>Dispensing Mechanism</b></figcaption>
+                    </figure>
+                    
+                </td>
+            </tr>
+        </table>
+
+        <p class="info-paragraph">The innovative medication dispensing system seamlessly interfaces with a designated website, continuously retrieving up-to-date patient 
+            records that meticulously outline prescribed medicines and their corresponding dispensing schedules.M</p> 
+        
+        <p class="info-paragraph">The intricately designed mechanical system comprises a receptacle featuring a purpose-built slot for efficient medication passage. 
+            A dynamically responsive, conical-shaped rotating disc, intricately connected to a motor, hosts multiple pill slots, ensuring a perpetual 
+            supply. 
+        </p>
+        
+        <p class="info-paragraph">As the system approaches the scheduled dispensing time, precise motor rotations align a conical disc slot with a fixed slot in the container
+            base, prompting a seamless pill transfer. The ensuing impact of the dispensed pill on the base container, housing the DC motor, 
+            triggers the onboard accelerometer, registering a successful dispensing cycle.
+        </p>
+
+        <p class="info-paragraph">For accuracy, the dispensing mechanism is intricately integrated into the NI myRIO, utilizing its embedded accelerometer for 
+            precise pill detection. 
+        </p>
+
+        <p class="info-paragraph">A strategically placed vertical separator demarcates distinct regions for pill collection and dispensing within the top container, 
+            showcasing a thoughtful and efficient system architecture.
+        </p>
+    
+    <!-- Video -->
+    <h2>Video Demonstration</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/aTUR1oNzUg0?si=s314H_MZI4oIe_JI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <br>
+    <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F9PxpNPLpg8?si=-zAs_5uuuCb_kGH2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <h2>Challenges Encountered</h2>
+    <!-- Yet Another Body Section -->
+    <ul style="font-size: 16px; text-align: justify;">
+        <li>The accelerometer does not always correctly detect the pill dispensed because of the interference from the motor vibrations.</li>
+        <li>The current mechanism is not robust to different pill sizes.</li>
+        <li>3D printing only sometimes guarantees the required tolerance. Hence, the system had some geometrical errors. These errors were handled by filing.</li>
+    </ul>
+    
+    <h2>Conclusion</h2>
+    <ul style="font-size: 16px; text-align: justify;">
+        <li>Successfully connected myRIO to WiFi and fetching data from a webpage.</li>
+        <li>Successfully designed and implemented a fully functional mechanical system.</li>
+        <li>Successfully integrated various sensors and actors with a mechanical system to develop a fully functional mechatronic system.</li>
+        <li>Tackled a critical real-life problem.</li>
+    </ul>
+
+    <h2>Potential Next Steps</h2>
+    <ul style="font-size: 16px; text-align: justify;">
+        <li>Use a weight sensor instead of an accelerometer for accurate dispensing detection.</li>
+        <li>Upgrade the dispensing mechanism to be robust to pills of various sizes.</li>
+        <li>Use a dynamic website to record/edit patient medication details in real time.</li>
+        <li>Separate the motor and dispensing detection system to eliminate interference from motor rotation/vibrations.</li>
+        <li>Use a more organized circuit    </li>
+    </ul>
+    <!-- Closing Body -->
+</body>
+</html>
